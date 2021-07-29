@@ -56,7 +56,9 @@
           <span class="todo-count">
             <strong>{{ remaining }}</strong> {{ remaining | pluralize }} left
           </span>
+          <p>
           <p>Double click on job to edit</p>
+        </p>
           <ul class="filters">
             <li class="container mx-auto flex items-left flex-col mt-10"><a href="#/all" :class="{ selected: visibility == 'all' }" class="border-black border-solid border-2 bg-pink-400 hover:bg-black hover:text-blue-400 focus:bg-black focus:text-blue-400 px-2 py-1">All</a></li>
             <li class="container mx-auto flex items-left flex-col mt-1"><a href="#/active" :class="{ selected: visibility == 'active' }" class="border-black border-solid border-2 bg-red-400 hover:bg-black hover:text-blue-400 focus:bg-black focus:text-blue-400 px-2 py-1">Ongoing</a></li>
