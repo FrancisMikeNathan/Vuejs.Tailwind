@@ -9,9 +9,10 @@
     <title>Vue.Js & Tailwind</title>
 </head>
 <body>
-  
+    <h1 class="container mx-auto flex items-center flex-col mt-10">New todo...</h1>
     <div class="container mx-auto flex items-center flex-col mt-10">
     <section class="todoapp">
+        
         <header class="header">
           <input class="bg-gray-200 focus:bg-white border-black border-solid border-2 px-2 py-1 w-full mb-4 hover:bg-white"
               autocomplete="off"
@@ -55,6 +56,7 @@
           <span class="todo-count">
             <strong>{{ remaining }}</strong> {{ remaining | pluralize }} left
           </span>
+          <p>Double click on job to edit</p>
           <ul class="filters">
             <li><a href="#/all" :class="{ selected: visibility == 'all' }" class="border-black border-solid border-2 bg-pink-400 hover:bg-black hover:text-blue-400 focus:bg-black focus:text-blue-400 px-2 py-1">All</a></li>
             <li><a href="#/active" :class="{ selected: visibility == 'active' }" class="border-black border-solid border-2 bg-red-400 hover:bg-black hover:text-blue-400 focus:bg-black focus:text-blue-400 px-2 py-1">Ongoing</a></li>
