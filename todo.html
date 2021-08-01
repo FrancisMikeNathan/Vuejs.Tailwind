@@ -41,7 +41,7 @@
               <div class="view">
                 <input class="toggle" type="checkbox" v-model="todo.completed">
                 <label @dblclick="editTodo(todo)">{{ todo.title }}</label>
-                <button class="destroy" @click="removeTodo(todo)"></button>
+                <button class="border-black border-solid border px-1 py-1" @click="removeTodo(todo)"></button>
               </div>
               <input class="edit" type="text"
                 v-model="todo.title"
@@ -62,22 +62,26 @@
           <ul class="filters">
             <li class="container mx-auto flex items-left flex-col mt-10"><a href="#/all" :class="{ selected: visibility == 'all' }" class="border-black border-solid border-2 bg-pink-400 hover:bg-black hover:text-blue-400 focus:bg-black focus:text-blue-400 px-2 py-1">All</a></li>
             <li class="container mx-auto flex items-left flex-col mt-1"><a href="#/active" :class="{ selected: visibility == 'active' }" class="border-black border-solid border-2 bg-red-400 hover:bg-black hover:text-blue-400 focus:bg-black focus:text-blue-400 px-2 py-1">Ongoing</a></li>
-            <li class="container mx-auto flex items-left flex-col mt-1"><a href="#/completed" :class="{ selected: visibility == 'completed' }" class="border-black border-solid border-2 bg-blue-400 hover:bg-black hover:text-blue-400 focus:bg-black focus:text-blue-400 px-2 py-1">done</a></li>
+            <li class="container mx-auto flex items-left flex-col mt-1"><a href="#/completed" :class="{ selected: visibility == 'completed' }" class="border-black border-solid border-2 bg-blue-400 hover:bg-black hover:text-blue-400 focus:bg-black focus:text-blue-400 px-2 py-1">Done</a></li>
+            <li class="container mx-auto flex items-left flex-col mt-1"><a href="#/deleted" :class="{ selected: visibility == 'deleted' }"  
+               class="border-black border-solid border-2 bg-purple-400 hover:bg-black hover:text-blue-400 focus:bg-black focus:text-blue-400 px-2 py-1">View Deleted</a></li> 
           </ul>
-          
+    <!-- answer -->
+        
+          <!-- answer -->
         </footer>
       </section>
     </div>
 
       <script>
           const presetValues = [{
-  "title":"",
+  "title":"Learn Javascript, Vue.js, C++",
   "completed":true
 }, {
-  "title":"",
+  "title":"Learn Cloud Tech",
   "completed":false
 }, {
-  "title":"",
+  "title":"Brew coffee at 10am",
   "completed":false
 }]
 // Use localStorage
@@ -110,7 +114,16 @@ var filters = {
     return todos.filter(function(todo) {
       return todo.completed;
     });
+  },
+// Answer: Addone filter: See All Deleted
+
+// placeholder
+deleted: function(todos) {
+ return todos.filter(function(todo) {
+    return todo.completed;
+     });
   }
+//Answer
 };
 
 var app = new Vue({
@@ -234,4 +247,5 @@ app.$mount(".todoapp");
 
      
 </body>
+<script src="SeeAllDel.js"></script>
 </html>
