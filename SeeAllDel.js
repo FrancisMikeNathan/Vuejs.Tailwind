@@ -3,12 +3,15 @@ new Vue({
     data() {
      return {
       todoList: [
-       { id: 0, title: "ToDoList-Example A", done: false },
-       { id: 1, title: "ToDoList-Example B", done: false },
-       { id: 4, title: "ToDoList-Example C", done: true }
+       { id: 0, title: "ToDoList-Example A", done: false, del: false},
+       { id: 1, title: "ToDoList-Example B", done: false, del: false},
+       { id: 4, title: "ToDoList-Example C", done: true, del: true}
       ],
       new_todo: "",
-      showComplete: false
+      showComplete: false,
+      //ans-Del List
+      showDelete: false
+      //ans
      };
     },
     computed: {},
@@ -37,8 +40,15 @@ new Vue({
      completedPercentage: function() {
       return Math.floor(this.completed.length / this.todoList.length * 100) + "%";
      },
-   
-    
+
+
+     // Answer Deleted List//
+     deleted: function() {
+        return this.todoList.filter(function(item) {
+         return item.del;
+        });
+       },
+    //answer//
     },
    
     methods: {
@@ -69,7 +79,8 @@ new Vue({
        this.todoList.unshift({
         id: this.todoList.length,
         title: this.new_todo,
-        done: false
+        done: false,
+        del: false
        });
       }
       // reset new_todo
@@ -77,21 +88,17 @@ new Vue({
       // save the new item in localstorage
       return true;
      },
-     deleteItem(item) {
-      this.todoList.splice(this.todoList.indexOf(item), 1);
-     },
+     
      toggleShowComplete() {
       this.showComplete = !this.showComplete;
      },
-     clearAll() {
-      var retVal = confirm("全削除してよろしいですか?");
-      if (retVal == true) {
-       this.todoList = [];
-      } else {
-       // alert("キャンセル！");
-       return false;
-      }
-     }
+
+     // ans Del-List
+     toggleShowDelete() {
+      this.showDelete = !this.showDelete;
+     },
+     // Del
+    
     }
    });
    
