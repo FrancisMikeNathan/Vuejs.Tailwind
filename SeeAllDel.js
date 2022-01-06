@@ -40,9 +40,13 @@ new Vue({
      completedPercentage: function() {
       return Math.floor(this.completed.length / this.todoList.length * 100) + "%";
      },
-
-
      // Answer Deleted List//
+   //   pendingDel: function() {
+   //    return this.todoList.filter(function(item) {
+   //     return !item.del;
+   //    });
+   //   },
+
      deleted: function() {
         return this.todoList.filter(function(item) {
          return item.del;
