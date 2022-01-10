@@ -29,7 +29,7 @@ new Vue({
     computed: {
      pending: function() {
       return this.todoList.filter(function(item) {
-       return !item.done;
+       return !item.done && !item.del;
       });
      },
      completed: function() {
@@ -41,11 +41,8 @@ new Vue({
       return Math.floor(this.completed.length / this.todoList.length * 100) + "%";
      },
      // Answer Deleted List//
-   //   pendingDel: function() {
-   //    return this.todoList.filter(function(item) {
-   //     return !item.del;
-   //    });
-   //   },
+     
+
 
      deleted: function() {
         return this.todoList.filter(function(item) {
