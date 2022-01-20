@@ -99,7 +99,10 @@ new Vue({
       this.showDelete = !this.showDelete;
      },
      // Del
-    
+   
+//
+
+
     }
    });
    

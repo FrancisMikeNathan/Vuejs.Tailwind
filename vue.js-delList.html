@@ -13,49 +13,56 @@
   <section class="todo-wrapper">
     <h1 style="font-size:60px;">ToDo List</h1>
     
-    <div id="time"></div>
-    <form @keydown.enter.prevent="">
-      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+    <div id="time">
+    <form @keydown.enter.prevent="" class="flex items-center">
+      <input type="text" class="w-4/5 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       class="input-todo" v-bind:class="{ active: new_todo }" placeholder="New jobs" v-model="new_todo" v-on:click="addItem">
-      <div class="btn btn-add" v-bind:class="{ active: new_todo }"
+      <div class="btn btn-add text-black-900 font-bold mr-4 border rounded bg-green-500 hover:bg-blue-500 hover:text-blue-400 focus:bg-black focus:text-blue-400 px-3 py-2" v-bind:class="{ active: new_todo }" 
       @click="addItem">+</div>
     </form>
-
-    <div v-if="pending.length > 0">
-      <p class="status busy"
+  </div>
+    <div v-if="pending.length > 0" class="w-4/5">
+      <p class="flex justify-center"
       >You have {{ pending.length }} pending item<span v-if="pending.length>1">s</span></p>
       <transition-group name="todo-item" tag="ul" class="todo-list">
       <li v-for="(item, index) in pending" v-bind:key="item.title"        
       class="flex shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-      <input class="todo-checkbox" v-bind:id="'item_' + item.id" v-model="item.done" type="checkbox"> 
+      
+        <input class="todo-checkbox" v-bind:id="'item_' + item.id" v-model="item.done" type="checkbox">
+      
       <label v-bind:for="'item_' + item.id"></label>
       <span class="todo-text">{{ item.title }}</span>
+
       <!-- ans here (Del List) -->
-      <input class="todo-Del-checkbox" v-bind:id="'item_' + item.id" v-model="item.del" type="checkbox" class="ml-auto border rounded bg-red-600">Del</span>
+
+      <input class="todo-Del-checkbox" v-bind:id="'item_' + item.id" v-model="item.del" type="checkbox">Del</span>
       <label v-bind:for="'item_' + item.id"></label>
+      
+     
       <!-- ans -->
       </li>    
+     
         </transition-group> 
-      
+        
    </div> 
     <transition name="slide-fade">
-      <p class="status free" v-if="!pending.length">Pending jobs</p> 
+      <p class="flex justify-center" v-if="!pending.length">Pending jobs</p> 
     </transition> 
 
-    <div v-if="completed.length > 0 && showComplete">
-      <p class="status">Completed tasks: {{ completedPercentage }}</p>
+    <div v-if="completed.length > 0 && showComplete"  class="w-4/5">
+      <p class="flex justify-center">Completed tasks: {{ completedPercentage }}</p>
       <transition-group name="todo-item" tag="ul" class="todo-list archived">
         <li v-for="(item, index) in completed" v-bind:key="item.title" class="flex shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
           <input class=" todo-checkbox" v-bind:id="'item_' + item.id" v-model="item.done" type="checkbox">
           <label v-bind:for="'item_' + item.id"></label>
           <span class="todo-text">{{ item.title }}</span> 
-          <span class="ml-auto bg-red-600 border rounded" class="delete" @click="deleteItem(item)">Del</span>
+          <!-- <span class="ml-auto bg-red-600 border rounded" class="delete" @click="deleteItem(item)">Del</span> -->
           </li>
         </transition-group>  
       </div> 
         <!-- ans here (Deleted List) -->
-       <div v-if="deleted.length > 0 && showDelete">
-          <p class="">Deleted</p>
+       <div v-if="deleted.length > 0 && showDelete" class="w-4/5">
+          <p class="flex justify-center">Deleted</p>
         <transition-group name="todo-item-deleted" tag="ul" class="todo-list deleted archived">
           <li v-for="(item, index) in deleted" v-bind:key="item.title" class="flex shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
           <input class="todo-checkbox" v-bind:id="'item_' + item.id" v-model="item.del" type="checkbox">
@@ -69,13 +76,13 @@
         <!-- ans  -->
     
     <div class="control-buttons">
-      <div class="btn btn-secondary" v-if="completed.length > 0" @click="toggleShowComplete"><span v-if="!showComplete">Show </span><span v-else>Hide </span>Completed jobs</div>
-      <div class="btn btn-secondary" v-if="deleted.length > 0" @click="toggleShowDelete"><span v-if="!showDelete">Show </span><span v-else>Hide </span>Deleted jobs</div>
+      <div class="flex justify-center" class="btn btn-secondary" v-if="completed.length > 0" @click="toggleShowComplete"><span v-if="!showComplete" class="mr-1">Show</span><span v-else class="mr-1">Hide</span>Completed jobs</div>
+      <div class="flex justify-center" class="btn btn-secondary" v-if="deleted.length > 0" @click="toggleShowDelete"><span v-if="!showDelete" class="mr-1">Show</span><span v-else class="mr-1">Hide</span >Deleted jobs</div>
     </div>
   
   </section>
 </div>
-<footer>
+<footer class="flex justify-center">
   Copyright
 </footer>
   
